@@ -7,4 +7,4 @@ def SUB(a, b):
         return type(a)(res)
     else:
         return a - b
-
+print(SUB(*eval(input())))
