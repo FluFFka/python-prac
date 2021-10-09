@@ -5,7 +5,7 @@ def Calc(s, t, u):
     def u_xy(z):
         x = s_x(z)
         y = t_x(z)
-        return eval(u)
+        return eval(u, {**locals(), **globals()})
     return u_xy
 L = eval(input())
 F = Calc(*L)
