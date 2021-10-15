@@ -1,0 +1,1 @@
+170, 40, -3.14, 3.14, 1-2*sum([(-1)**(n + 1) * sin((n + 1) * x) / (n + 1) for n in range(15)]) # it's fourier series for f(x)=x+1 with 15 additions in sum

@@ -1,14 +1,20 @@
 from math import *
-
-def scale(A, B, a, b, x):
-    return (x - A) / (B - A) * (b - a) + a
-
-w, h = 80, 25
-F = sin
-X = [-4, 4]
-X_v = [scale(0, w + 1, X[0], X[1], x) for x in range(w+1)]
-Y_v = [F(x) for x in X_v]
-Y = [max(Y_v), min(Y_v)]
-
-for y in Y:
-    print(scale(Y[0], Y[1], 0, w+1, int(y)*' '+'*'))
+w, h, *X, fun_str = input().strip().split(',')
+w = int(w)
+h = int(h)
+X = [float(X[0]), float(X[1])]
+if w == 1:
+    X_vals = [X[0]]
+else:
+    X_vals = [X[0] + i * (X[1] - X[0]) / (w - 1) for i in range(w)]
+Y_vals = []
+for x in X_vals:
+    Y_vals.append(eval(fun_str))
+Y = [min(Y_vals), max(Y_vals)]
+for i in range(h):
+    for j in range(w):
+        if h - i - 1 == int((h - 1) * (Y_vals[j] - Y[0]) / (Y[1] - Y[0])):
+            print('#', end='')
+        else:
+            print('.', end='')
+    print()
