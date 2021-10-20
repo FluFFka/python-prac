@@ -1,8 +1,12 @@
 from math import *
-w, h, *X, fun_str = input().strip().split(',')
+X = [0, 0]
+w, h, X[0], X[1], *fun_strs = input().split()
 w = int(w)
 h = int(h)
 X = [float(X[0]), float(X[1])]
+fun_str = ''
+for i in fun_strs:
+    fun_str += i + ' '
 if w == 1:
     X_vals = [X[0]]
 else:
@@ -14,7 +18,8 @@ Y = [min(Y_vals), max(Y_vals)]
 for i in range(h):
     for j in range(w):
         if h - i - 1 == int((h - 1) * (Y_vals[j] - Y[0]) / (Y[1] - Y[0])):
-            print('#', end='')
+            print('*', end='')
         else:
-            print('.', end='')
+            print(' ', end='')
     print()
+
