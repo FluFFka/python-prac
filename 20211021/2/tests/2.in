@@ -1,0 +1,3 @@
+:q q print(q)\\nprint(q+1)
+q 1
+quit q
