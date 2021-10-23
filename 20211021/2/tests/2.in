@@ -1,3 +1,32 @@
-:q q print(q)\\nprint(q+1)
+:q q 2*q
 q 1
-quit q
+q 2
+q '123'
+q [2]
+q f"123"
+:format a b c d f"{a+1}+{b+1}+{c+1}+{d+1}={a+b+c+d+4}"
+format 1 2 3 4
+q 888888888888888888888888888888888888888888888888888888888888888888888888888888888
+:empty ''
+empty
+empty
+empty
+empty
+empty
+empty
+:a ''
+:a ''
+:a ''
+:a ''
+:a ''
+:a ''
+format -1 -2 0.2 4444444
+a
+:a ''
+a
+:a ''
+:a ''
+:a ''
+:empty wqeqwieoqwieoqwieoqwi pp wqeqwieoqwieoqwieoqwi+pp+'not_empty_anymore'
+empty 'mm_' 'yes_'
+quit "functions:{}\nstrings:{}"

@@ -1,3 +1,5 @@
 :asd x str(x)*((sin:=1)-round(cos(x))+x**5)
+:qwe 'qwe_function'
 asd 2
-quit q
+qwe
+quit "{}:{}"

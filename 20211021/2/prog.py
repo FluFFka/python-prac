@@ -1,15 +1,27 @@
 import math
 functions = dict()
+strings_num = 0
 while True:
     inp = input().split()
+    strings_num += 1
     if inp[0] == 'quit':
-        functions['quit'] = inp[1]
+        print(eval(inp[1]).format(len(functions)+1, strings_num))
         break
-    if len(inp) == 3:
-        name, var, func = inp[0], inp[1], inp[2]
-        functions[name[1:]] = (func, var)
+    if inp[0][0] == ':':
+        name = inp[0]
+        variables = []
+        for i in range(1, len(inp) - 1):
+            variables.append(inp[i])
+        func = inp[-1]
+        functions[name[1:]] = (func, variables)
     else:
-        name, value = inp[0], eval(inp[1])
-        func, var = functions[name]
-        print(eval(func, math.__dict__, {var: value}))
-print(len(functions))
+        values = []
+        for i in range(1, len(inp)):
+            values.append(eval(inp[i]))
+        name = inp[0]
+        func, variables = functions[name]
+        local = dict()
+        if len(variables) != 0:
+            local = dict(zip(variables, values))
+        print(eval(func, math.__dict__, local))
+
