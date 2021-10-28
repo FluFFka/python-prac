@@ -8,4 +8,5 @@ def Pareto(*x):
         else:
             res.append(x[i])
     return tuple(res)
-print(Pareto(*eval(input())))
+import sys
+exec(sys.stdin.read())

@@ -1,4 +1,4 @@
-:fan q exec('import'+f'%c'%32+'time\na="\|/-"\nfor'+f'%c'%32+'i'+f'%c'%32+'in'+f'%c'%32+'range(q+3-q%4):\n'+f'%c'%32+f'%c'%32+f'%c'%32+f'%c'%32+'print("\\r"+a[(i+1)%4]+"\a",end="")\n'+f'%c'%32+f'%c'%32+f'%c'%32+f'%c'%32+'time.sleep(0.1)\nprint(">lol\vlol\vlol\vlol<-")')
+:fan q exec('import'+f'%c'%32+'time\na="\|/-"\nfor'+f'%c'%32+'i'+f'%c'%32+'in'+f'%c'%32+'range(q+3-q%4):\n'+f'%c'%32+f'%c'%32+f'%c'%32+f'%c'%32+'print("\\r"+a[(i+1)%4]+"\a",end="")\n'+f'%c'%32+f'%c'%32+f'%c'%32+f'%c'%32+'time.sleep(0.03)\nprint(">lol\vlol\vlol\vlol<-")')
 fan 10
 fan 5
 fan 1

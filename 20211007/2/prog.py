@@ -7,4 +7,5 @@ def SUB(a, b):
         return type(a)(res)
     else:
         return a - b
-print(SUB(*eval(input())))
+import sys
+exec(sys.stdin.read())
