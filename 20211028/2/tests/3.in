@@ -1,0 +1,3 @@
+www=.11
+print(list(slide([KeyboardInterrupt, ..., (i for i in range(10)), int, .3, '123', f"{www+2}"], 2)))
+

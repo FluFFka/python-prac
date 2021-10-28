@@ -1,0 +1,6 @@
+s = slide([], 1)
+print(list(s))
+s = slide(range(20), 2)
+print(list(s))
+s = slide({1: 1, 2: 3, 3: 5, "qwe": "tt"}, 3)
+print(list(s))

@@ -1,2 +1,1 @@
-m, n = 2, 4
-print(', '.join([str(i) for i in fib(m, n)]))
+print(', '.join([str(i) for i in fib(10, 100)]))

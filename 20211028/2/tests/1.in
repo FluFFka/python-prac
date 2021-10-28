@@ -1,0 +1,13 @@
+def get_primes():
+    i = 2
+    while True:
+        for j in range(2, int(i**0.5) + 1):
+            if i % j == 0:
+                break
+        else:
+            yield i
+        i += 1
+s = slide(get_primes(), 1)
+for i in range(1000):
+    print(next(s), end=' ')
+print()
