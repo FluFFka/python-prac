@@ -5,7 +5,7 @@ def slide(seq, n):
     while 1:
         seqcopy, seq = tee(seqcopy)
         curr = list(islice(seq, n))
-        if len(curr) < n:
+        if len(curr) < 1:
             break
         yield from curr
         next(seqcopy)
