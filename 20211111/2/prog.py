@@ -11,15 +11,14 @@ class TriangleSquare:
         except Exception:
             raise InvalidInput
         try:
-            self.a = (abs(x1 - x2)**2 + abs(y1 - y2)**2)**0.5
-            self.b = (abs(x3 - x2)**2 + abs(y3 - y2)**2)**0.5
-            self.c = (abs(x1 - x3)**2 + abs(y1 - y3)**2)**0.5
+            self.a = ((x1 - x2)**2 + (y1 - y2)**2)**0.5
+            self.b = ((x3 - x2)**2 + (y3 - y2)**2)**0.5
+            self.c = ((x1 - x3)**2 + (y1 - y3)**2)**0.5
         except Exception:
             raise BadTriangle
         try:
             s = self.get_square() <= 0
         except Exception as E:
-            print(E)
             raise BadTriangle
         if s:
             raise BadTriangle

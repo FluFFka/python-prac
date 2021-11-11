@@ -1,0 +1,8 @@
+a = OrderedComplexMul(1.123456)
+b = OrderedComplexMul(3+3.1j)
+c = OrderedComplexMul(1.j,9.8j+555)
+d = OrderedComplexMul(OrderedComplex(123,45.j+1j-123), c@b)
+p = [a, b, c, d]
+for i in range(4):
+    for j in range(4):
+        print(p[i]@p[j], p[i] < p[j])
