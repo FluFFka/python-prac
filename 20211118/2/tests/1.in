@@ -1,13 +1,19 @@
-class C:
-        num = Num()
-class D:
-	num = Num()
+class A:
+    n = Num()
+class B(A):
+    n = Num()
 
-print(C().num)
-c, d = C(), D()
-c.num = d.num = 2
-print(c.num+d.num)
-c.num = "qwerqwerqwer"
-print(c.num+d.num)
-d.num = range(10, 1000, 7)
-print(c.num+d.num)
+a = A()
+b = B()
+a.n = b.n = 1
+del a.n
+c = B()
+c.n = range(10)
+def cc(n):
+ for i in range(n):
+     yield i
+d = A()
+d.n = cc(15)
+print(c.n, d.n, b.n + c.n)
+del c.n
+print(d.n)

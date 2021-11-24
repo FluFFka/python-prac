@@ -1,16 +1,16 @@
 class Num:
-
     def __get__(self, obj, cls):
-        try:
+        if hasattr(obj, "_val"):
             return obj._val
-        except Exception:
-            return 0
+        return 0
     def __set__(self, obj, value):
-        try:
-            value.real
+        if hasattr(value, "real"):
             obj._val = value
-        except Exception:
-            obj._val = len(value)
+        else:
+            obj._val = len(list(value))
+    def __delete__(self, obj):
+        obj._val = 0
+        pass
 
 import sys
 exec(sys.stdin.read())

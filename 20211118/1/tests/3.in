@@ -1,0 +1,23 @@
+@objcount
+class A:
+    def __init__(self, q, qq=1):
+        self.q = q
+        self.qq = qq
+    def __del__(self):
+        print(self.counter)
+        print(self.q)
+        print(self.qq)
+
+a = A('123')
+b = A(123, 444)
+c = A(None, qq='YEAH')
+print(A.counter)
+del a
+del b
+print(A.counter)
+print(c.q)
+c.q = 13333
+print(c.q)
+del c
+print(A.counter)
+print(A.counter)

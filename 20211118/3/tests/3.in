@@ -1,0 +1,11 @@
+a = Alpha(q=2,w=4,g=2)
+print(a)
+a.q = '123'
+print(a)
+b = AlphaQ(q=2,w=4,g=2)
+print(b)
+b.r = 123
+b.w = 'tt'
+b.x = int
+b.p = AttributeError
+print(b)

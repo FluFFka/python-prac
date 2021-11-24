@@ -1,0 +1,39 @@
+class clcl:
+    def __init__(self, check):
+        self.counter = check % 2
+    def __del__(self):
+        print('one clcl deleted')
+
+@objcount
+class myclass:
+    counter = 123
+    def __init__(self, gg, oo, a=10):
+        self.gouter = gg
+        self.oouter = oo(a)
+
+print(myclass.counter)
+a = myclass(123, clcl)
+print(myclass.counter)
+del a
+print(myclass.counter)
+b = myclass(clcl(132331), int, "1234")
+print(myclass.counter)
+del b.gouter
+print(myclass.counter)
+del b
+print(myclass.counter)
+c = myclass(123, clcl, 321322)
+print(myclass.counter)
+
+@objcount
+class A(int):
+    pass
+print(A.counter)
+c = A('101010', 2)
+print(c)
+print(A('51'))
+print(myclass.counter)
+print(A.counter)
+del c
+print(A.counter)
+

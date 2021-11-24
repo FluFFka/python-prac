@@ -1,0 +1,24 @@
+from time import time
+
+a = Alpha(a=10, b=20, c=30, d=40, e=50, f=60, g=70, h=80, k=90, l=100)
+start = time()
+for i in range(30000):
+    a.a += a.b
+    a.c += a.l
+    a.e -= a.h
+    a.d = a.e
+    a.f += a.g - a.k
+finish = time()
+t1 = finish - start
+a = AlphaQ(a=10, b=20, c=30, d=40, e=50, f=60, g=70, h=80, k=90, l=100)
+start = time()
+for i in range(30000):
+    a.a += a.b
+    a.c += a.l
+    a.e -= a.h
+    a.d = a.e
+    a.f += a.g - a.k
+finish = time()
+t2 = finish - start
+print(t2 > t1)
+

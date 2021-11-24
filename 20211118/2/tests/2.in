@@ -1,0 +1,8 @@
+class A:
+    a = Num()
+    b = Num()
+
+a = A()
+b = A()
+del a.a
+print(b.b)

@@ -1,0 +1,12 @@
+@objcount
+class A(str):
+    counter = 1
+
+print(A.counter)
+a = A('123123123qqq')
+print(a.upper())
+print(A.counter)
+b = A()
+print(b.counter)
+del a
+print(A.counter)

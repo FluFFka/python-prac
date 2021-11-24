@@ -1,0 +1,4 @@
+g: 2, q: 2, w: 4
+g: 2, q: 123, w: 4
+g: 2, q: 2, w: 4
+g: 2, p: <class 'AttributeError'>, q: 2, r: 123, w: tt, x: <class 'int'>
