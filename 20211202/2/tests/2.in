@@ -1,0 +1,23 @@
+class C(metaclass=check):
+    b: str
+    c: int
+    a: type(None)
+    pass
+
+def ca(c):
+    print(c.check_annotations())
+
+c = C()
+ca(c)
+c.b = "qwe"
+ca(c)
+c.c = 2
+ca(c)
+c.a = None
+ca(c)
+c.a = 1
+ca(c)
+c.a = None
+c.b = 1
+ca(c)
+

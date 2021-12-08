@@ -1,0 +1,19 @@
+class AbacabA(int, metaclass=dump):
+    def __add__(self, other):
+        print("want to add", self, "to", other)
+        return self.real+other
+
+class Cab(str, metaclass=dump):
+    def __add__(self, other):
+        s = ''
+        for i in range(other):
+            s += self.__str__()
+        return s
+    def __str__(self):
+        return f"<>{super().__str__()}<>"
+
+a = AbacabA(123)
+print(a + 1)
+b = Cab("chc")
+print(b)
+print(b + 3)

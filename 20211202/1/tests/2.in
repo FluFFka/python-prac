@@ -1,0 +1,19 @@
+class nn(metaclass=dump):
+    def __init__(self, a, aa=3):
+        self.a = aa
+        self.aa = a
+    def check_eq(self):
+        return self == 3.+10.j
+    def __eq__(self, other):
+        print(self.a, other.imag, self.aa, other.real)
+        return self.a == other.imag and self.aa == other.real
+
+n = nn(1)
+k = nn(2, aa=4)
+l = nn(1)
+m = nn(a=3., aa=10.)
+print(n.check_eq())
+print(k.check_eq())
+print(l.check_eq())
+print(m.check_eq())
+n1 = nn(3, aa=1)

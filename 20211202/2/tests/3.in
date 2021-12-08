@@ -1,0 +1,13 @@
+class C(metaclass=check):
+    a: str = "qwe"
+    b: int
+    def __init__(self, bb='123'):
+        self.b = bb
+
+def ca(c):
+    print(c.check_annotations())
+
+c = C()
+ca(c)
+cc = C(123)
+ca(cc)
