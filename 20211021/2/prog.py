@@ -5,7 +5,10 @@ while True:
     inp = input().split()
     strings_num += 1
     if inp[0] == 'quit':
-        print(eval(inp[1]).format(len(functions)+1, strings_num))
+        if inp[1][0] == '"' and inp[1][-1] == '"':
+            print(inp[1][1:-1].format(len(functions)+1, strings_num))
+        else:
+            print(inp[1].format(len(functions)+1, strings_num))
         break
     if inp[0][0] == ':':
         name = inp[0]
