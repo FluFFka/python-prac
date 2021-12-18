@@ -13,5 +13,4 @@ def Bisect(a, x):
         if n == 20:
             break
     return False
-import sys
-exec(sys.stdin.read())
+print(Bisect(*eval(input())))

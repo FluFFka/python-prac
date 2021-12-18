@@ -27,4 +27,5 @@ for i, j in Counter(ss).items():
             res.append(i)
 for i in sorted(res):
     print(i, end=' ')
-print()
+if res:
+    print()

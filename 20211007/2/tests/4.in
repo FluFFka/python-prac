@@ -1,1 +1,1 @@
-print(SUB(False, True))
+False, True
