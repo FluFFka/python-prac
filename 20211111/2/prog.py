@@ -33,5 +33,5 @@ while True:
     except BadTriangle:
         print("Not a triangle")
     else:
-        print(f"{tri.get_square():.2f}")
+        print(f"{round(tri.get_square(), 2):.2f}")
         break
