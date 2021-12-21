@@ -1,4 +1,6 @@
 def Pareto(*x):
+    if not (type(x[0]) is tuple):
+        return (x,)
     res = []
     for i in range(len(x)):
         for j in range(len(x)):
