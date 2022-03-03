@@ -1,4 +1,5 @@
 import textdistance
+import multiprocessing as mp
 
 def dist(s1, s2, t):
     if t == "L":
@@ -12,4 +13,7 @@ s1 = input()
 s2 = input()
 s3 = input()
 
-res = dist(s1, s2, s3)
+pool = mp.Pool(1)
+process = pool.apply_async(dist, (s1, s2, s3))
+res = process.get()
+
