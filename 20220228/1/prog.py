@@ -15,5 +15,8 @@ s3 = input()
 
 pool = mp.Pool(1)
 process = pool.apply_async(dist, (s1, s2, s3))
-res = process.get()
+try:
+    res = process.get(timeout=1)
+except mp.context.TimeoutError:
+    res = -1
 
