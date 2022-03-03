@@ -20,3 +20,5 @@ try:
 except mp.context.TimeoutError:
     res = -1
 
+print(res)
+
