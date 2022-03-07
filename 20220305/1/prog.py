@@ -3,7 +3,7 @@ import shlex
 import cmd
 
 FIELD_SIZE = 10
-field = [[0 for i in range(FIELD_SIZE)] for j in range(FIELD_SIZE)]
+field = [[[] for i in range(FIELD_SIZE)] for j in range(FIELD_SIZE)]
 
 
 class Monster:
@@ -40,10 +40,15 @@ class repl(cmd.Cmd):
                     raise IndexError
             except Exception:
                 print('X and Y must be integer from 0 to 9 (included)')
-                return 
-            field[x][y] = Monster(args[2], hp)
+                return
+            for i in range(len(field[x][y])):
+                if field[x][y][i].name == args[2]:
+                    field[x][y][i].hp = hp
+                    break
+            else:
+                field[x][y].append(Monster(args[2], hp))
         else:
-            print("Command pattern: add monster name <monster_name> hp <number of health points> coords <X> <Y>")
+            print("Command pattern: add monster name <monster_name> hp <number_of_health_points> coords <X> <Y>")
     
     def complete_add(self, prefix, linef, beg, end):
         line = shlex.split(linef)
@@ -89,8 +94,9 @@ class repl(cmd.Cmd):
         if len(args) >= 1 and args[0] == 'monsters':
             for i, ei in enumerate(field):
                 for j, ej in enumerate(ei):
-                    if type(ej) is Monster:
-                        print(f"{ej.name} at ({i} {j}) hp {ej.hp}")
+                    if len(ej) > 1:
+                        for monster in ej:
+                            print(f"{monster.name} at ({i} {j}) hp {monster.hp}")
         else:
             print('Command pattern: show monsters')
     def complete_show(self, prefix, line, beg, end):
@@ -108,6 +114,11 @@ class repl(cmd.Cmd):
                 pl.x = newx
                 pl.y = newy
                 print(f'player at {pl.x} {pl.y}')
+                if len(field[pl.x][pl.y]) > 0:
+                    out = []
+                    for monster in field[pl.x][pl.y]:
+                        out.append(f'{monster.name} {monster.hp} hp')
+                    print(f'encountered: {", ".join(out)}')
             else:
                 print('cannot move')
         else:
@@ -121,6 +132,30 @@ class repl(cmd.Cmd):
             if 0 <= newx <= 9 and 0 <= newy <= 9:
                 available.append(dir_name)
         return [s for s in available if s.startswith(prefix)]
+
+    def do_attack(self, arg):
+        args = shlex.split(arg, comments=True)
+        if len(args) >= 1:
+            for i, monster in enumerate(field[pl.x][pl.y]):
+                if monster.name == args[0]:
+                    if monster.hp - 10 > 0:
+                        field[pl.x][pl.y][i].hp -= 10
+                        print(f"{monster.name} lost 10 hp, now has {field[pl.x][pl.y][i].hp} hp")
+                    else:
+                        print(f"{monster.name} dies")
+                        field[pl.x][pl.y].remove(monster)
+                    break
+            else:
+                print(f'no {args[0]} here')
+        else:
+            print('Command pattern: attack <monster_name>')
+
+    def complete_attack(self, prefix, line, beg, end):
+        ret = [s.name for s in field[pl.x][pl.y] if s.name.startswith(prefix)]
+        for i in range(len(ret)):
+            if len(ret[i].split()) > 1:
+                ret[i] = '"' + ret[i] + '"'
+        return ret
 
     def do_exit(self, arg):
         """Exit command line"""
