@@ -11,6 +11,14 @@ class Monster:
         self.name = name
         self.hp = hp
 
+class Player:
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+
+
+directions = {'up': [0, 1], 'down': [0, -1], 'left': [-1, 0], 'right': [1, 0]}
+
 
 class repl(cmd.Cmd):
     prompt = '> '
@@ -23,7 +31,7 @@ class repl(cmd.Cmd):
                 if hp <= 0:
                     raise ValueError
             except Exception:
-                print('Number of health points should be a positive integer')
+                print('Number of health points must be a positive integer')
                 return
             try:
                 x = int(args[6])
@@ -91,9 +99,32 @@ class repl(cmd.Cmd):
         print('qwe')
         return []
 
+    def do_move(self, arg):
+        args = shlex.split(arg, comments=True)
+        if len(args) >= 1 and args[0] in ('up', 'down', 'left', 'right'):
+            newx = pl.x + directions[args[0]][0]
+            newy = pl.y + directions[args[0]][1]
+            if 0 <= newx <= 9 and 0 <= newy <= 9:
+                pl.x = newx
+                pl.y = newy
+                print(f'player at {pl.x} {pl.y}')
+            else:
+                print('cannot move')
+        else:
+            print('Command pattern: move <direction>\nDirection must be up, down, left or right')
+
+    def complete_move(self, prefix, line, beg, end):
+        available = []
+        for dir_name, dirr in directions.items():
+            newx = pl.x + dirr[0]
+            newy = pl.y + dirr[1]
+            if 0 <= newx <= 9 and 0 <= newy <= 9:
+                available.append(dir_name)
+        return [s for s in available if s.startswith(prefix)]
+
     def do_exit(self, arg):
         """Exit command line"""
         return True
 
-
+pl = Player()
 repl().cmdloop()
