@@ -36,6 +36,7 @@ class repl(cmd.Cmd):
             field[x][y] = Monster(args[2], hp)
         else:
             print("Command pattern: add monster name <monster_name> hp <number of health points> coords <X> <Y>")
+    
     def complete_add(self, prefix, linef, beg, end):
         line = shlex.split(linef)
         if len(line) == 1:
@@ -75,6 +76,20 @@ class repl(cmd.Cmd):
             return ['coords']
         return []
 
+    def do_show(self, arg):
+        args = shlex.split(arg, comments=True)
+        if len(args) >= 1 and args[0] == 'monsters':
+            for i, ei in enumerate(field):
+                for j, ej in enumerate(ei):
+                    if type(ej) is Monster:
+                        print(f"{ej.name} at ({i} {j}) hp {ej.hp}")
+        else:
+            print('Command pattern: show monsters')
+    def complete_show(self, prefix, line, beg, end):
+        if 'monsters'.startswith(prefix):
+            return ['monsters']
+        print('qwe')
+        return []
 
     def do_exit(self, arg):
         """Exit command line"""
