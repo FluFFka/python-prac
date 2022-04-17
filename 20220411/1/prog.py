@@ -3,9 +3,7 @@ translation = gettext.translation('prog', 'po', fallback=True)
 _ = translation.gettext
 ngettext = translation.ngettext
 
-def _(arg):
-    return arg
-
 
 while (s := input().split()):
-    print(_("Entered {} words").format(len(s)))
+    n = len(s)
+    print(ngettext("Entered {} word", "Entered {} words", n).format(n))
