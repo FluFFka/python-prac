@@ -1,6 +1,3 @@
-from cmath import sqrt
-
-
 def solveSquare(a, b, c):
     D = b * b - 4 * a * c
     if D >= 0:
