@@ -1,0 +1,8 @@
+[build-system]
+requires = ["build", "doit", "setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eq"
+version = "1.0"
+dependencies = ["pyfiglet"]
