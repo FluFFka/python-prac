@@ -1,0 +1,3 @@
+include dodo.py
+include tests.py
+recursive-include eq/po *.po
