@@ -2,9 +2,12 @@ from . import eq
 import locale
 import gettext
 import pyfiglet
+import os
+
+po_path = os.path.join(os.path.dirname(__file__), 'po')
 
 locale.setlocale(locale.LC_ALL, locale.getlocale())
-translation = gettext.translation('eq', 'po')
+translation = gettext.translation('eq', po_path)
 _ = translation.gettext
 
 

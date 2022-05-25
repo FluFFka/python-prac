@@ -1,5 +1,5 @@
 DOIT_CONFIG = {
-    'default_tasks': ['extract', 'update', 'compile', 'test', 'wheel', 'sdist', 'cleanup']
+    'default_tasks': ['extract', 'update', 'compile', 'test']#, 'wheel', 'sdist', 'cleanup']
 }
 
 def task_extract():
@@ -7,8 +7,8 @@ def task_extract():
     Extract the translation.
     """
     return {
-        "actions": ["pybabel extract -o po/eq.pot eq"],
-        "targets": ["po/eq.pot"]
+        "actions": ["pybabel extract -o eq/po/eq.pot eq"],
+        "targets": ["eq/po/eq.pot"]
     }
 
 def task_update():
@@ -16,10 +16,10 @@ def task_update():
     Update the translation.
     """
     return {
-        "actions": ["pybabel update -D eq -i po/eq.pot -d po -l ru",
-                    "pybabel update -D eq -i po/eq.pot -d po -l en"],
-        "file_dep": ["po/eq.pot"],
-        "targets": ["po/ru/LC_MESSAGES/eq.po"]
+        "actions": ["pybabel update -D eq -i eq/po/eq.pot -d eq/po -l ru",
+                    "pybabel update -D eq -i eq/po/eq.pot -d eq/po -l en"],
+        "file_dep": ["eq/po/eq.pot"],
+        "targets": ["eq/po/ru/LC_MESSAGES/eq.po"]
     }
 
 def task_compile():
@@ -27,9 +27,9 @@ def task_compile():
     Compile the translation.
     """
     return {
-        "actions": ["pybabel compile -D eq -d po -l ru",
-                    "pybabel compile -D eq -d po -l en"],
-        "targets": ["po/ru/LC_MESSAGES/eq.mo"]
+        "actions": ["pybabel compile -D eq -d eq/po -l ru",
+                    "pybabel compile -D eq -d eq/po -l en"],
+        "targets": ["eq/po/ru/LC_MESSAGES/eq.mo"]
     }
 
 def task_test():
@@ -39,7 +39,7 @@ def task_test():
     return {
         "actions": ["python3 -m tests"]
     }
-
+'''
 def task_wheel():
     """
     Build the wheel.
@@ -68,3 +68,4 @@ def task_cleanup():
         "actions": ["rm po/eq.pot",
                     "rm po/ru/LC_MESSAGES/eq.mo"]
     }
+'''
